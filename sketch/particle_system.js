@@ -1,7 +1,10 @@
+let bubbleSprite;
+
 class ParticleSystem {
     constructor(position) {
       this.origin = position.copy();
       this.particles = [];
+      bubbleSprite = loadImage("bubble.png");
     }
   
     addParticle() {
@@ -24,7 +27,8 @@ class ParticleSystem {
       this.acceleration = createVector(0, -0.05);
       this.velocity = createVector(random(-1, 1), random(-1, 0));
       this.position = position.copy();
-      this.timeToLive = 200;
+      this.timeToLive = 100;
+      this.type = Math.round(Math.random());
     }
   
     run() {
@@ -35,15 +39,14 @@ class ParticleSystem {
     update() {
       this.velocity.add(this.acceleration);
       this.position.add(this.velocity);
-      this.timeToLive -= 2;
+      this.timeToLive -= 1;
     }
   
     display() {
-      stroke(255, 255, 255, 100);
-      strokeWeight(2);
-      fill(255, 255, 255, 50);
-      const radius = 10;
-      ellipse(this.position.x, this.position.y, radius, radius);
+      if (this.type == 0 || (Math.floor(this.timeToLive)) % 2 == 0)
+      {
+        image(bubbleSprite, this.position.x, this.position.y, bubbleSprite.width * 4, bubbleSprite.height * 4);
+      }
     }
   
     isDead() {
