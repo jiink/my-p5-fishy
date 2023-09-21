@@ -72,7 +72,7 @@ function draw() {
     swimTrigger = false;
   }
 
-  background("#2B6790");
+  background("#114E75");
   drawSwimmer(swimmerX, swimmerY, Math.floor(millis() / 600));
   textSize(24);
   text("Click me!", mouseX - 32, mouseY);
