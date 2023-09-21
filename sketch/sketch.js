@@ -57,7 +57,7 @@ function jump() {
 }
 
 function draw() {
-  if (swimmerY < height - img.height * swimmerScale) {
+  if (swimmerY < height - swimmerSprite.height * swimmerScale) {
     swimmerYAccel = 0.02;
     swimmerYVel += swimmerYAccel;
     swimmerYVel *= swimmerFriction;
